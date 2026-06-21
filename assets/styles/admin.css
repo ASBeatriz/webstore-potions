@@ -1,0 +1,42 @@
+.main-container{
+    gap: 30px;
+}
+
+h1{
+    font-size: 50px;
+    font-weight: 700;
+    margin: 0 0;
+    color: var(--text-contrast);
+    /* color: white; */
+}
+
+h2{
+    font-size: 30px;
+    /* margin: 0 0; */
+    color: var(--text-contrast);
+    /* color: white; */
+}
+
+#titulos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 0px;
+}
+
+#titulos p{
+    text-align: center;
+}
+
+.main-container p{
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    /* margin-bottom: 30px; */
+    margin: 0 0;
+}
+
+form{
+    width: 100%;
+}

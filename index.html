@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poções e Soluções</title>
+    <link rel="stylesheet" href="assets/styles/main.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <!-- Fontes --> 
+    <!-- Dps verificar se n é melhor baixar -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
+</head>
+
+<!-- Dps dar uma organizada na utilização de classes/ids 
+    E ver se dá pra juntar algumas propriedades repetidas em uma classe -->
+<body>
+    <!-- Navbar -->
+    <nav>
+        <ul class="sidebar">
+            <li onclick=hideSidebar()> <a href="#"> <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#ffffff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg> </a> </li>
+            <li> <a href="#sobre" onclick=hideSidebar()> Sobre </a></li>
+            <li> <a href="#historia" onclick=hideSidebar()> História </a></li>
+            <li> <a href="#produtos" class="highlight" onclick=hideSidebar()> Compre já!</a></li>
+        </ul>
+        <ul class="horizontal-bar">
+            <li class="hideOnMobile"> <a href="#sobre"> Sobre </a></li>
+            <li class="hideOnMobile"> <a href="#historia"> História </a></li>
+            <li class="hideOnMobile"> <a href="#produtos" class="highlight"> Compre já!</a></li>
+        </ul>
+    </nav>
+
+    <!-- Capa -->
+    <div id="capa">
+        <div id="texto-capa">
+           <div id="titulos">
+               <h1>Annabelle Merigold</h1>
+               <h2>Since 1867</h2>
+           </div>  
+            <div id="location">
+                <img src="/assets/images/icons/location-icon.svg" alt="ícone de localização">
+                Beco da Última Saída
+            </div>
+        </div>
+    </div>
+
+    <!-- Sobre loja -->
+    <section id="sobre" class="background-color1">
+        <div class="main-container">
+            
+            <div class="section-title"> Quem Somos? </div>
+            
+            <!-- <div class="section-content" id="section-sobre"> -->
+
+                <div class="section-content" id="sobre-texto">
+                    <p class="titulo outfit-font">Olá!</p>
+                    <p>* Descrição *</p>
+                </div>
+            <!-- </div> -->
+        </div>
+    </section>
+    
+    <!-- Nossa História -->
+    <section id="historia" class="background-color2">
+        <div class="main-container">
+
+            <div class="section-title"> Nossa História </div>
+
+            <div class="carrossel" id="carrossel-historia">
+                <div class="card">
+                    <img src="" alt="">
+
+                    <div class="card-overlay">
+                        <h3>Titulo 1</h3>
+                        <p>Pequena descrição</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="" alt="">
+
+                    <div class="card-overlay">
+                        <h3>Titulo 2</h3>
+                        <p>Pequena descrição</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="" alt="">
+
+                    <div class="card-overlay">
+                        <h3>Titulo 3</h3>
+                        <p>Pequena descrição</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- Produtos -->
+    <section id="produtos" class="background-color1">
+        <div class="main-container">
+            <div class="section-title"> Conheça Nossos Produtos </div>
+
+            <div class="carrossel" id="carrossel-produtos">
+
+
+                <!-- 
+                
+                🧪 Poção Blue Sky
+                Valor: 300 moedas
+
+                🌸 Poção do Perfume Misterioso
+                Valor: 200 moedas
+
+                🌲 Poção de Pinus
+                Valor: 3000 moedas
+
+                💀 Poção da Beleza Eterna
+                Valor: 100 moedas
+
+                🌈 Poção do Arco Íro
+                Valor: 120 moedas
+
+                🔮 Caldeirão das Verdades Secretas
+                Valor: 150 moeda
+                
+                -->
+
+
+                <div class="card">
+                    <img src="assets/images/potion_blue-sky.png" alt="Poção Blue Sky">
+                    <p>Descrição: Essa poção provê um surto de inspiração por 24 horas. Foi utilizada por John Lennon quando escreveu Lucy in the Sky with Diamonds</p>
+                    <p>Valor: 300 moedas</p>
+                    <button class="btn-avaliar"> Comprar </button>
+                </div>
+
+                <div class="card">
+                    <img src="assets/images/potion_beleza_eterna.png" alt="Poção da Beleza Eterna">
+                    <p>Descrição: Veneno que mata rápido.</p>
+                    <p>Valor: 100 moedas</p>
+                    <button class="btn-avaliar"> Comprar </button>
+                </div>
+
+                <div class="card">
+                    <img src="assets/images/potion_perfume_misterioso.png" alt="Poção Perfume Misterioso">
+                    <p>Descrição: Essa poção faz com que você fique cheirando lilás e groselha por 24 dias. Essência muito admirada pelos bruxos</p>
+                    <p>Valor: 200 moedas</p>
+                    <button class="btn-avaliar"> Comprar </button>
+                </div>
+
+                <div class="card">
+                    <img src="assets/images/potion_pinus.png" alt="Poção de Pinus">
+                    <p>Descrição: Essa poção faz com que você fique 10 cm mais alto! Observação: efeitos colaterais desconhecidos.</p>
+                    <p>Valor: 3000 moedas</p>
+                    <button class="btn-avaliar"> Comprar </button>
+                </div>
+
+                <div class="card">
+                    <img src="assets/images/potion_arco-iro.png" alt="Poção do Arco Íro">
+                    <p>Descrição: Traz felicidade momentânea. Pode durar de 10 minutos a 2 dias.</p>
+                    <p>Valor: 120 moedas</p>
+                    <button class="btn-avaliar"> Comprar </button>
+                </div>
+
+                <div class="card">
+                    <img src="assets/images/potion_caldeirao.png" alt="Caldeirão das Verdades Secretas">
+                    <p> Descrição: As pessoas lhe dirão apenas verdades por 1 hora. É necessário beber os 5L.</p>
+                    <p>Valor: 150 moedas</p>
+                    <button class="btn-avaliar"> Comprar </button>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="overlay hidden">
+            <div class="modal hidden">
+                <a href="#produtos" class="close-modal"> &times </a>
+                <h1>Comprar</h1>
+
+                <form action="" method="POST" id="form-avaliacao">
+
+                    <label for="nome">Nome:</label>
+                    <input required type="text" name="nome" placeholder="Digite seu nome">
+
+                    <!-- Alterar esse input para um campo de telefone -->
+                    <label for="numero">Número:</label>
+                    <input required type="text" name="numero" placeholder="Digite seu numero">
+
+                    <label for="observacao">Observação:</label>
+                    <textarea required type="text" name="observacao" placeholder="Se necessário, adicione alguma observação"></textarea>
+
+                    <p>Após recebermos o seu pedido, entraremos em contato para os detalhes da compra.</p>
+
+                    <button type="submit">Fazer Pedido</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="content">
+                <div class="links">
+                    <a href="#sobre"> Sobre </a>
+                    <a href="#historia"> Nossa História </a>
+                    <a href="#contratar-servico"> Produtos </a>
+                </div>
+                <div class="title">
+                    Loja de Poções
+                </div>
+                <div class="btn-div">
+                    <a class="contato-btn" href="" target="_blank"> <img src="assets/images/icons/mail.svg" alt="ícone de email"> Entre em contato</a>
+                </div>
+                <div class="texto">
+                    * frase curta e direta sobre a loja *
+                </div>
+        </div>
+        <hr>
+        <div class="bottom">
+            &copy Todos direitos reservados.
+        </div>
+    </footer>
+
+    <!-- Script para o sidebar e pop up avaliação -->
+    <script>
+        function showSidebar(){
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'flex'
+            const horizontal = document.querySelector('.horizontal-bar')
+            horizontal.style.display = 'none'    
+        }
+        function hideSidebar(){
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'none'
+            const horizontal = document.querySelector('.horizontal-bar')
+            horizontal.style.display = 'flex'
+        }
+
+        const pop = document.querySelector('.btn-avaliar')
+        const x = document.querySelector('.close-modal')
+        const modal = document.querySelector('.modal')
+        const overlay = document.querySelector('.overlay')
+
+        const open = function(){
+            modal.classList.remove('hidden');
+            overlay.classList.remove('hidden');
+        }
+
+        pop.addEventListener('click', open)
+
+        const close = function(){
+            modal.classList.add('hidden');
+            overlay.classList.add('hidden');
+        }
+
+        x.addEventListener('click', close);
+
+    </script>
+
+    <script>
+        const form = document.querySelector("#form-avaliacao");
+        const carrossel = document.querySelector("#carrossel-produtos");
+
+        function atualizarEstrelas(container = document) {
+            container.querySelectorAll(".card-estrela").forEach(elemento => {
+
+                const quantidade = Number(elemento.textContent);
+
+                elemento.textContent = "";
+
+                for(let i = 0; i < quantidade; i++) {
+                    const estrela = document.createElement("img");
+
+                    estrela.src = "assets/images/icons/estrela.svg";
+                    estrela.alt = "estrela";
+
+                    elemento.appendChild(estrela);
+                }
+            });
+        }
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const nome = form.nome.value;
+            const descricao = form.avaliacao.value;
+            const estrelas = form.estrelas.value;
+
+            const card = document.createElement("div");
+            card.classList.add("card");
+
+            card.innerHTML = `
+                <p class="card-estrela">${estrelas}</p>
+                <p class="card-descricao">${descricao}</p>
+                <p class="card-nome">${nome}</p>
+            `;
+
+            carrossel.prepend(card);
+
+            atualizarEstrelas(card);
+
+            form.reset();
+
+            // Fechar modal (opcional)
+            document.querySelector(".overlay")?.classList.add("hidden");
+            document.querySelector(".modal")?.classList.add("hidden");
+        });
+
+        // atualizarEstrelas();
+
+    </script>
+
+</body>
+</html>
