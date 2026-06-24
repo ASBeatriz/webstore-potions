@@ -41,16 +41,17 @@
             <p> Adicione uma nova poção ao catálogo. </p>
 
             <div class="section-content">
-                <form action="" method="POST" id="form-cadastro-opcao" style="max-width: 500px; margin: 0 auto;">
+                <form id="potionForm" style="max-width: 500px; margin: 0 auto;">
                     
                     <label for="nome">Nome da Poção:</label>
                     <input required type="text" name="nome" placeholder="Ex: Elixir da Longa Vida">
 
                     <label for="descricao">Descrição:</label>
                     <textarea required name="descricao" placeholder="Descreva os efeitos e ingredientes da poção..."></textarea>
-
-                    <label for="imagem">URL da Imagem:</label>
-                    <input required type="text" name="imagem" placeholder="Ex: /assets/images/potions/elixir.png">
+                    
+                    <label for="imagem">Imagem:</label>
+                    <!-- o que eu preciso mudar nos outros cofigos pra deixar a imagem opicional? -->
+                    <input required type="file" name="imagem" accept="image/*">
 
                     <label for="preco">Preço (Nuque/Galeão):</label>
                     <input required type="number" name="preco" step="0.01" placeholder="0.00">
@@ -75,38 +76,27 @@
             <div class="section-content">
                 <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
                     <thead>
-                        <tr style="text-align: left; border-bottom: 2px solid #ffffff;">
-                            <th style="padding: 10px;">Imagem</th>
-                            <th style="padding: 10px;">Nome</th>
-                            <th style="padding: 10px;">Descrição</th>
-                            <th style="padding: 10px;">Preço</th>
-                            <th style="padding: 10px;">Ações</th>
+                        <tr>
+                            <th>Imagem</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Preço</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <td style="padding: 10px;">
-                                <img src="/assets/images/potions/exemplo.png" alt="Poção Exemplo" style="width: 50px; height: 50px; object-fit: cover;">
+                    <tbody id="potionsTableBody">
+                        <tr>
+                            <td>
+                                <!-- <img src="/assets/images/potions/exemplo.png" alt="Poção Exemplo" style="width: 50px; height: 50px; object-fit: cover;"> -->
                             </td>
-                            <td style="padding: 10px;">Poção Polissuco</td>
-                            <td style="padding: 10px;">Permite que o bebedor assuma a forma de outra pessoa.</td>
-                            <td style="padding: 10px;">G$ 15.00</td>
-                            <td style="padding: 10px;">
-                                <button class="btn-remover" style="background-color: #ff4d4d; color: white; border: none; padding: 5px 10px; cursor: pointer;">Remover</button>
+                            <td>Poção Polissuco</td>
+                            <td>Permite que o bebedor assuma a forma de outra pessoa.</td>
+                            <td>$ 15.00</td>
+                            <td>
+                                <button class="btn-remover">Remover</button>
                             </td>
                         </tr>
                         
-                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
-                            <td style="padding: 10px;">
-                                <img src="/assets/images/potions/exemplo2.png" alt="Poção Exemplo 2" style="width: 50px; height: 50px; object-fit: cover;">
-                            </td>
-                            <td style="padding: 10px;">Felix Felicis</td>
-                            <td style="padding: 10px;">Garante sorte temporária a quem a beber.</td>
-                            <td style="padding: 10px;">G$ 50.00</td>
-                            <td style="padding: 10px;">
-                                <button class="btn-remover" style="background-color: #ff4d4d; color: white; border: none; padding: 5px 10px; cursor: pointer;">Remover</button>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -133,5 +123,120 @@
             &copy Todos direitos reservados.
         </div>
     </footer> -->
+
+
+    <script>
+
+        const form = document.getElementById("potionForm")
+
+        form.addEventListener(
+            "submit",
+            async (e) => {
+
+                e.preventDefault()
+
+                const formData = new FormData(form);
+
+                // const potion = {
+                //     nome: formData.get("nome"),
+                //     descricao: formData.get("descricao"),
+                //     // imagem: formData.get("imagem"),
+                //     preco: Number(formData.get("preco"))
+                // };
+
+                const response = await fetch(
+                    "http://localhost:3000/potions",
+                    {
+                        method: "POST",
+                        body: formData
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error("Erro ao cadastrar poção");
+                }
+
+                const result = await response.json();
+
+                console.log(result);
+                alert("Poção cadastrada com sucesso!");
+            }
+        )
+
+        async function loadPotions() {
+
+            // busca as poções cadastradas no backend
+            const response = await fetch("http://localhost:3000/potions")
+            const potions = await response.json()
+
+            console.log(potions)
+
+            // insere no frontend
+            const tbody = document.getElementById("potionsTableBody");
+            tbody.innerHTML = "";
+
+            potions.forEach((potion) => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>
+                        <img
+                            src="http://localhost:3000/${potion.imagem}"
+                            alt="${potion.nome}"
+                            style="
+                                width: 50px;
+                                height: 50px;
+                                object-fit: cover;
+                            "
+                        >
+                    </td>
+
+                    <td>
+                        ${potion.nome}
+                    </td>
+
+                    <td>
+                        ${potion.descricao}
+                    </td>
+
+                    <td>
+                        $ ${Number(potion.preco).toFixed(2)}
+                    </td>
+
+                    <td>
+                        <button class="btn-remover" data-id="${potion.id}"">
+                            Remover
+                        </button>
+                    </td>
+                `;
+
+                tbody.appendChild(tr);
+
+                // adiciona funcionalidade do botão
+                const btnRemover = tr.querySelector(".btn-remover")
+                btnRemover.addEventListener("click", async () => {
+                    const response = await fetch(
+                        `http://localhost:3000/potions/${potion.id}`,
+                        {
+                            method: "DELETE"
+                        }
+                    );
+
+                    if (!response.ok) {
+                        throw new Error("Erro ao deletar poção");
+                    }
+
+                    const result = await response.json();
+
+                    console.log(result);
+                    alert("Poção removida com sucesso!");
+                })
+                 
+            });
+        }
+        window.addEventListener("load", loadPotions);
+
+
+
+    </script>
 </body>
 </html>
