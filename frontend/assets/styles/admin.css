@@ -17,6 +17,10 @@ h2{
     /* color: white; */
 }
 
+body {
+    padding-top: 50px;
+}
+
 #titulos{
     display: flex;
     flex-direction: column;

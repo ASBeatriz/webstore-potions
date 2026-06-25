@@ -181,6 +181,56 @@ button:active{
     background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, var(--purple2) 20%, var(--purple2) 80%, rgba(255, 255, 255, 0) 100%);
 }
 
+/* --------------------- Toast Notification --------------------- */
+
+
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    z-index: 9999;
+}
+
+.toast {
+    min-width: 250px;
+    padding: 15px 20px;
+
+    border-radius: 8px;
+
+    color: white;
+    font-weight: bold;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+    animation: slideIn 0.3s ease;
+}
+
+.toast.success {
+    background-color: #2e7d32;
+}
+
+.toast.error {
+    background-color: #c62828;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
 /* --------------------- Carrosel --------------------- */
 /* o scroll marker não funciona -- provavelmente porque o navegador n suporta (featura mt nova) */
 
@@ -575,34 +625,43 @@ nav ul li a.highlight:hover{
 
 /* --------------------- Seção Produtos --------------------- */
 
-#carrossel-produtos .card{
-    height: 400px;
-    flex: 0 0 300px;
+#carrossel-produtos .card {
+    height: 500px;
+    flex: 0 0 350px;
+
+    display: flex;
+    flex-direction: column;
+
     color: white;
     background-color: var(--blue3);
-    padding: 25px 25px;
-    text-align: center;
+
+    padding: 25px;
+    gap: 20px;
 }
 
-#carrossel-produtos .card button{
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+#carrossel-produtos .card button {
+    margin-top: auto;
+    height: 40px;
+    font-size: 16px;
 }
 
-#carrossel-produtos .card .price{
-    position: absolute;
-    bottom: 70px;
-    left: 50%;
-    transform: translateX(-50%);
+#carrossel-produtos .card p{
+    margin: 0 0;
+    font-size: 18px;
 }
+
+#carrossel-produtos .card h1{
+    margin: 0 0;
+    font-size: 20px;
+    align-self: center;
+}
+
 
 #carrossel-produtos .card img{
     height: 50%;
     width: 100%;
     object-fit: contain;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
 }
 
 #produtos .main-container{

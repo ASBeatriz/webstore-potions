@@ -50,11 +50,10 @@
                     <textarea required name="descricao" placeholder="Descreva os efeitos e ingredientes da poção..."></textarea>
                     
                     <label for="imagem">Imagem:</label>
-                    <!-- o que eu preciso mudar nos outros cofigos pra deixar a imagem opicional? -->
                     <input required type="file" name="imagem" accept="image/*">
 
-                    <label for="preco">Preço (Nuque/Galeão):</label>
-                    <input required type="number" name="preco" step="0.01" placeholder="0.00">
+                    <label for="preco">Preço:</label>
+                    <input required type="number" name="preco" step="0.01" placeholder="$ 0.00">
 
                     <button type="submit" style="margin-top: 20px;">Cadastrar Poção</button>
                 </form>
@@ -123,6 +122,32 @@
     </footer> -->
 
 
+    <div id="toast-container"></div>
+    
+
+    <!-- Script para exibir notificações (toasts) -->
+    <script>
+        function showToast(message, type = "success") {
+
+            const container =
+                document.getElementById("toast-container");
+
+            const toast =
+                document.createElement("div");
+
+            toast.classList.add("toast");
+            toast.classList.add(type);
+
+            toast.textContent = message;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 10000);
+        }
+    </script> 
+
     <script>
 
         const form = document.getElementById("potionForm")
@@ -130,8 +155,8 @@
         form.addEventListener(
             "submit",
             async (e) => {
-
                 e.preventDefault()
+                console.log("submit interceptado");
 
                 const formData = new FormData(form);
 
@@ -151,13 +176,25 @@
                 );
 
                 if (!response.ok) {
-                    throw new Error("Erro ao cadastrar poção");
+                    showToast(
+                        "Erro ao cadastrar poção",
+                        "error"
+                    );
+                    setTimeout(() => {
+                        console.log("toast ainda existe");
+                    }, 5000);
+
+
+                    return;
                 }
 
                 const result = await response.json();
 
                 console.log(result);
-                alert("Poção cadastrada com sucesso!");
+                showToast(
+                    "Poção cadastrada com sucesso!",
+                    "success"
+                );
             }
         )
 
@@ -226,7 +263,10 @@
                     const result = await response.json();
 
                     console.log(result);
-                    alert("Poção removida com sucesso!");
+                    showToast(
+                        "Poção removida com sucesso!",
+                        "success"
+                    );
                 })
                  
             });

@@ -171,14 +171,13 @@
                 <a href="#produtos" class="close-modal"> &times </a>
                 <h1>Comprar</h1>
 
-                <form action="" method="POST" id="form-compra">
+                <form id="form-compra">
 
                     <label for="nome">Nome:</label>
                     <input required type="text" name="nome" placeholder="Digite seu nome">
 
-                    <!-- Alterar esse input para um campo de telefone -->
-                    <label for="numero">Número:</label>
-                    <input required type="text" name="numero" placeholder="Digite seu numero">
+                    <label for="numero">Número de telefone:</label>
+                    <input type="tel" name="numero" pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{5})-([0-9]{4})" placeholder="(99) 99999-9999" required /> 
 
                     <label for="observacao">Observação:</label>
                     <textarea required type="text" name="observacao" placeholder="Se necessário, adicione alguma observação"></textarea>
@@ -214,6 +213,8 @@
         </div>
     </footer>
 
+    <div id="toast-container"></div>
+
     <!-- Script para o sidebar e pop up avaliação -->
     <script>
         function showSidebar(){
@@ -229,17 +230,9 @@
             horizontal.style.display = 'flex'
         }
 
-        // const pop = document.querySelector('.btn-avaliar')
         const x = document.querySelector('.close-modal')
         const modal = document.querySelector('.modal')
         const overlay = document.querySelector('.overlay')
-
-        // const open = function(){
-        //     modal.classList.remove('hidden');
-        //     overlay.classList.remove('hidden');
-        // }
-
-        // pop.addEventListener('click', open)
 
         const close = function(){
             modal.classList.add('hidden');
@@ -247,6 +240,39 @@
         }
 
         x.addEventListener('click', close);
+
+        // Script para exibir notificações (toasts)
+
+        function showToast(message, type = "success") {
+
+            const container =
+                document.getElementById("toast-container");
+
+            const toast =
+                document.createElement("div");
+
+            toast.classList.add("toast");
+            toast.classList.add(type);
+
+            toast.textContent = message;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Add toast ao solicitar compra
+        const formCompra = document.getElementById("form-compra")
+        formCompra.addEventListener("submit", (e) => {
+            e.preventDefault();
+            showToast(
+                "Pedido realizado com sucesso! Entraremos em contato em breve.",
+                "success"
+            );
+            close();
+        });
 
     </script>
 
@@ -320,7 +346,7 @@
 
     </script>
 
-
+    <!-- Script para carregar as poções -->
     <script>
         async function loadPotions() {
 
@@ -339,9 +365,12 @@
                 const card = document.createElement("div");
                 card.classList.add("card");
                 card.innerHTML = `
+                    <h1> 
+                        <strong> ${potion.nome} </strong>
+                    </h1>
                     <img src="/backend/${potion.imagem}" alt="${potion.nome}">
                     <p>${potion.descricao}</p>
-                    <p class="price">Valor: $${potion.preco.toFixed(2)}</p>
+                    <p class="price"> <strong> Valor </strong> : $${potion.preco.toFixed(2)}</p>
                     <button class="btn-comprar"> Comprar </button>
                 `;
 
@@ -353,6 +382,8 @@
                     // modal
                     modal.classList.remove('hidden');
                     overlay.classList.remove('hidden');    
+
+                    modal.querySelector("h1").textContent = `Comprar ${potion.nome}`;
                 });
             })
         }
