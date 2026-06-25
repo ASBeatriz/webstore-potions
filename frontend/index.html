@@ -69,7 +69,7 @@
                <h2>Since 1867</h2>
            </div>  
             <div id="location">
-                <img src="/assets/images/icons/location-icon.svg" alt="ícone de localização">
+                <img src="assets/images/icons/location-icon.svg" alt="ícone de localização">
                 Beco da Última Saída
             </div>
         </div>
@@ -97,35 +97,44 @@
 
             <div class="section-title"> Nossa História </div>
 
-            <div class="carrossel" id="carrossel-historia">
-                <div class="card">
-                    <img src="" alt="">
 
-                    <div class="card-overlay">
-                        <h3>Titulo 1</h3>
-                        <p>Pequena descrição</p>
+            <div class="carrossel-wrapper">
+                <button class="btn-prev">◄</button>
+
+                <div class="carrossel" id="carrossel-historia">
+
+                    <div class="card">
+                        <img src="" alt="">
+
+                        <div class="card-overlay">
+                            <h3>Titulo 1</h3>
+                            <p>Pequena descrição</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="card">
-                    <img src="" alt="">
+                    
+                    <div class="card">
+                        <img src="" alt="">
 
-                    <div class="card-overlay">
-                        <h3>Titulo 2</h3>
-                        <p>Pequena descrição</p>
+                        <div class="card-overlay">
+                            <h3>Titulo 2</h3>
+                            <p>Pequena descrição</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="card">
-                    <img src="" alt="">
+                    
+                    <div class="card">
+                        <img src="" alt="">
 
-                    <div class="card-overlay">
-                        <h3>Titulo 3</h3>
-                        <p>Pequena descrição</p>
+                        <div class="card-overlay">
+                            <h3>Titulo 3</h3>
+                            <p>Pequena descrição</p>
+                        </div>
                     </div>
+
                 </div>
 
+                <button class="btn-next">►</button>
             </div>
+
         </div>
     </section>
     
@@ -135,51 +144,58 @@
         <div class="main-container">
             <div class="section-title"> Conheça Nossos Produtos </div>
 
-            <div class="carrossel" id="carrossel-produtos">
+            <div class="carrossel-wrapper">
+                <button class="btn-prev">◄</button>
 
-                <!-- preciso fazer com que as imagens caibam dentro do card -->
-                 
-                <div class="card">
-                    <img src="assets/images/potion_blue-sky.png" alt="Poção Blue Sky">
-                    <p>Descrição: Essa poção provê um surto de inspiração por 24 horas. Foi utilizada por John Lennon quando escreveu Lucy in the Sky with Diamonds</p>
-                    <p>Valor: 300 moedas</p>
-                    <button class="btn-avaliar"> Comprar </button>
+                <div class="carrossel" id="carrossel-produtos">
+                    
+
+                    <div class="card">
+                        <img src="assets/images/potion_blue-sky.png" alt="Poção Blue Sky">
+                        <p>Descrição: Essa poção provê um surto de inspiração por 24 horas. Foi utilizada por John Lennon quando escreveu Lucy in the Sky with Diamonds</p>
+                        <p>Valor: 300 moedas</p>
+                        <button class="btn-avaliar"> Comprar </button>
+                    </div>
+
+                    <div class="card">
+                        <img src="assets/images/potion_beleza_eterna.png" alt="Poção da Beleza Eterna">
+                        <p>Descrição: Veneno que mata rápido.</p>
+                        <p>Valor: 100 moedas</p>
+                        <button class="btn-avaliar"> Comprar </button>
+                    </div>
+
+                    <div class="card">
+                        <img src="assets/images/potion_perfume_misterioso.png" alt="Poção Perfume Misterioso">
+                        <p>Descrição: Essa poção faz com que você fique cheirando lilás e groselha por 24 dias. Essência muito admirada pelos bruxos</p>
+                        <p>Valor: 200 moedas</p>
+                        <button class="btn-avaliar"> Comprar </button>
+                    </div>
+
+                    <div class="card">
+                        <img src="assets/images/potion_pinus.png" alt="Poção de Pinus">
+                        <p>Descrição: Essa poção faz com que você fique 10 cm mais alto! Observação: efeitos colaterais desconhecidos.</p>
+                        <p>Valor: 3000 moedas</p>
+                        <button class="btn-avaliar"> Comprar </button>
+                    </div>
+
+                    <div class="card">
+                        <img src="assets/images/potion_arco-iro.png" alt="Poção do Arco Íro">
+                        <p>Descrição: Traz felicidade momentânea. Pode durar de 10 minutos a 2 dias.</p>
+                        <p>Valor: 120 moedas</p>
+                        <button class="btn-avaliar"> Comprar </button>
+                    </div>
+
+                    <div class="card">
+                        <img src="assets/images/potion_caldeirao.png" alt="Caldeirão das Verdades Secretas">
+                        <p> Descrição: As pessoas lhe dirão apenas verdades por 1 hora. É necessário beber os 5L.</p>
+                        <p>Valor: 150 moedas</p>
+                        <button class="btn-avaliar"> Comprar </button>
+                    </div>
+
+                    <!-- indicator container moved outside the scrollable carousel so dots stay visible -->
                 </div>
 
-                <div class="card">
-                    <img src="assets/images/potion_beleza_eterna.png" alt="Poção da Beleza Eterna">
-                    <p>Descrição: Veneno que mata rápido.</p>
-                    <p>Valor: 100 moedas</p>
-                    <button class="btn-avaliar"> Comprar </button>
-                </div>
-
-                <div class="card">
-                    <img src="assets/images/potion_perfume_misterioso.png" alt="Poção Perfume Misterioso">
-                    <p>Descrição: Essa poção faz com que você fique cheirando lilás e groselha por 24 dias. Essência muito admirada pelos bruxos</p>
-                    <p>Valor: 200 moedas</p>
-                    <button class="btn-avaliar"> Comprar </button>
-                </div>
-
-                <div class="card">
-                    <img src="assets/images/potion_pinus.png" alt="Poção de Pinus">
-                    <p>Descrição: Essa poção faz com que você fique 10 cm mais alto! Observação: efeitos colaterais desconhecidos.</p>
-                    <p>Valor: 3000 moedas</p>
-                    <button class="btn-avaliar"> Comprar </button>
-                </div>
-
-                <div class="card">
-                    <img src="assets/images/potion_arco-iro.png" alt="Poção do Arco Íro">
-                    <p>Descrição: Traz felicidade momentânea. Pode durar de 10 minutos a 2 dias.</p>
-                    <p>Valor: 120 moedas</p>
-                    <button class="btn-avaliar"> Comprar </button>
-                </div>
-
-                <div class="card">
-                    <img src="assets/images/potion_caldeirao.png" alt="Caldeirão das Verdades Secretas">
-                    <p> Descrição: As pessoas lhe dirão apenas verdades por 1 hora. É necessário beber os 5L.</p>
-                    <p>Valor: 150 moedas</p>
-                    <button class="btn-avaliar"> Comprar </button>
-                </div>
+                <button class="btn-next">►</button>
             </div>
 
         </div>
@@ -189,7 +205,7 @@
                 <a href="#produtos" class="close-modal"> &times </a>
                 <h1>Comprar</h1>
 
-                <form action="" method="POST" id="form-avaliacao">
+                <form action="" method="POST" id="form-compra">
 
                     <label for="nome">Nome:</label>
                     <input required type="text" name="nome" placeholder="Digite seu nome">
@@ -269,55 +285,71 @@
     </script>
 
     <script>
-        const form = document.querySelector("#form-avaliacao");
-        const carrossel = document.querySelector("#carrossel-produtos");
+        // const carrossel = document.getElementById("carrossel-produtos");
 
-        function atualizarEstrelas(container = document) {
-            container.querySelectorAll(".card-estrela").forEach(elemento => {
-
-                const quantidade = Number(elemento.textContent);
-
-                elemento.textContent = "";
-
-                for(let i = 0; i < quantidade; i++) {
-                    const estrela = document.createElement("img");
-
-                    estrela.src = "assets/images/icons/estrela.svg";
-                    estrela.alt = "estrela";
-
-                    elemento.appendChild(estrela);
-                }
+        document.querySelectorAll(".btn-next").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const carrossel = btn.parentElement.querySelector(".carrossel");
+                carrossel.scrollBy({
+                    left: 320,
+                    behavior: "smooth"
+                });
             });
-        }
-
-        form.addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const nome = form.nome.value;
-            const descricao = form.avaliacao.value;
-            const estrelas = form.estrelas.value;
-
-            const card = document.createElement("div");
-            card.classList.add("card");
-
-            card.innerHTML = `
-                <p class="card-estrela">${estrelas}</p>
-                <p class="card-descricao">${descricao}</p>
-                <p class="card-nome">${nome}</p>
-            `;
-
-            carrossel.prepend(card);
-
-            atualizarEstrelas(card);
-
-            form.reset();
-
-            // Fechar modal (opcional)
-            document.querySelector(".overlay")?.classList.add("hidden");
-            document.querySelector(".modal")?.classList.add("hidden");
+        });
+        document.querySelectorAll(".btn-prev").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const carrossel = btn.parentElement.querySelector(".carrossel");
+                carrossel.scrollBy({
+                    left: -320,
+                    behavior: "smooth"
+                });
+            });
         });
 
-        // atualizarEstrelas();
+        document.querySelector(".btn-prev")
+        .addEventListener("click", () => {
+            carrossel.scrollBy({
+                left: -320,
+                behavior: "smooth"
+            });
+        });
+
+        // const cards = carrossel.querySelectorAll(".card");
+        // const indicadores = document.getElementById("indicadores-produtos");
+
+        // // create dots
+        // cards.forEach((_, i) => {
+        //     const dot = document.createElement("span");
+        //     dot.classList.add("indicador");
+        //     if (i === 0) dot.classList.add("ativo");
+        //     indicadores.appendChild(dot);
+        // });
+
+        // const dots = indicadores.querySelectorAll('.indicador');
+
+        // // update active dot on scroll
+        // const updateActiveDot = () => {
+        //     const gap = 10; // matches CSS .carrossel gap
+        //     const index = Math.round(carrossel.scrollLeft / (cards[0].offsetWidth + gap));
+        //     dots.forEach(d => d.classList.remove('ativo'));
+        //     if (dots[index]) dots[index].classList.add('ativo');
+        // };
+
+        // carrossel.addEventListener('scroll', () => {
+        //     // throttle with requestAnimationFrame
+        //     if (window.requestAnimationFrame) {
+        //         window.requestAnimationFrame(updateActiveDot);
+        //     } else {
+        //         updateActiveDot();
+        //     }
+        // });
+
+        // // clicking a dot scrolls to the card
+        // dots.forEach((dot, i) => {
+        //     dot.addEventListener('click', () => {
+        //         cards[i].scrollIntoView({ behavior: 'smooth', inline: 'center' });
+        //     });
+        // });
 
     </script>
 

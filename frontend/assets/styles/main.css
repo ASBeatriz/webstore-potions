@@ -111,7 +111,6 @@ button{
 
 button:hover{
     background-color: var(--blue2);
-    /* background-color: #1a1a59; */
     color: white;
     box-shadow: var(--btn-shadow-hover);
 }
@@ -185,73 +184,98 @@ button:active{
 /* --------------------- Carrosel --------------------- */
 /* o scroll marker não funciona -- provavelmente porque o navegador n suporta (featura mt nova) */
 
-.carrossel {
+.carrossel-wrapper{
+    position: relative;
+    width: 95vw;
+    max-width: 95vw;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.carrossel{
     display: flex;
     gap: 10px;
-    width: 90vw;
     overflow-x: auto;
-    scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    padding: 10px 10px;
-}
+    scroll-behavior: smooth;
+    scrollbar-width: none;
 
-.carrossel::scroll-marker-group{
-    display: flex;
-    justify-content: center;
-    gap: .5em;
-}
-
-.card::scroll-marker{
-    content: '';
-    height: 1em;
-    width: 1em;
-    background-image: var(--temp);
-    background-size: 23.00px 23.00px;
-    border-radius: 50%;
-}
-
-.card::scroll-marker:target-current{
-    background-color: var(--purple2);
+    /* keep carousel inside its container and allow horizontal scrolling */
+    width: 90%;
+    max-width: 100%;
+    justify-self: center;
+    box-sizing: border-box;
+    align-items: flex-start;
+    -webkit-overflow-scrolling: touch;
 }
 
 .carrossel::-webkit-scrollbar{
     display: none;
 }
 
-.carrossel::scroll-button(right), .carrossel::scroll-button(left){
-    content: '►';
-    border: none;
-    background-color: var(--purple2);
-    color: white;
-    font-size: 30px;
-    height: 50px;
+.card{
+    flex: 0 0 300px;
+    scroll-snap-align: center;
+}
+
+@media(max-width: 800px){
+    .card{
+        flex: 0 0 100%;
+    }
+}
+
+.btn-prev,
+.btn-next{
+    position: absolute;
+    top: 50%;
+
     width: 50px;
+    height: 50px;
+
+    border: none;
     border-radius: 50%;
     cursor: pointer;
-    position: fixed;
-    position-area: right center;
-    translate: -50%;
-}
 
-.carrossel::scroll-button(left){
-    content: '◄';
-    position-area: left center;
-    translate: 50%;
-}
+    background: var(--purple2);
+    color: white;
+    font-size: 24px;
 
-/* .card {
+    z-index: 10;
+
+    /* override regras gerais dos botões */
+    min-width: 0;
+    padding: 0;
     display: flex;
-    flex-direction: column;
-    scroll-snap-align: start;
-    border-radius: 50px; 
-    background-color: hsla(240, 77%, 33%, 0.34) ;
-    background-size: 23.00px 23.00px;
-    box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    box-sizing: border-box;
-    
-    text-align: center;
-    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-prev{
+    left: 5px;
+}
+
+.btn-next{
+    right: 5px;
+}
+
+/* .indicadores{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.indicador{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.indicador.ativo{
+    background-color: var(--purple2);
 } */
 
 .card{
@@ -406,7 +430,7 @@ nav ul li a.highlight:hover{
 #capa{
     background-image: 
         linear-gradient(0deg,rgba(43, 22, 57, 1) 0%, rgba(255, 255, 255, 0) 15%),
-        url(/assets/images/foto-capa.png);
+        url(../images/foto-capa.png);
 
     background-size: cover;
     background-position: 0% 10%;
@@ -527,19 +551,14 @@ nav ul li a.highlight:hover{
 
 /* --------------------- Seção História --------------------- */
 
-#carrossel-historia{
-    anchor-name: --carrosselTrabalho;
-}
-
-#carrossel-historia::scroll-button(right), #carrossel-historia::scroll-button(left){
-    position-anchor: --carrosselTrabalho;
-}
-
 #carrossel-historia .card{
     height: 500px;
     /* aspect-ratio: 5 / 3;  /* Para o caso de querer manter a proporção na variação do tamanho de telas*/
     flex: 0 0 500px;
 }
+
+
+/* --------------------- Seção Produtos --------------------- */
 
 #carrossel-produtos .card{
     height: 250px;
@@ -549,86 +568,8 @@ nav ul li a.highlight:hover{
     padding: 25px 25px;
 }
 
-.card .card-estrela {
-    display: flex;
-    flex: 1;
-    margin-bottom: 0;
-    /* border: 1px solid red; */
-}
-.card .card-estrela img{
-    width: 25px;
-    height: 25px;
-    object-fit: contain;
-}
-.card .card-descricao {
-    /* display: flex; */
-    /* border: 1px solid red; */
-    flex: 4;
-    font-family: var(--open-sans-font);
-    font-size: 17px;
-    overflow-y: auto;
-    margin: 0 0;
-    padding: 10px 10px;
-    /* align-content: center; */
-}
-
-.card .card-descricao::-webkit-scrollbar {
-  width: 7px;               
-}
-
-.card .card-descricao::-webkit-scrollbar-track {
-  background: transparent;       
-  border-radius: 5px;        
-}
-
-.card .card-descricao::-webkit-scrollbar-thumb {
-  background: #0F508C;          
-  border-radius: 5px;        
-}
-
-.card .card-descricao::-webkit-scrollbar-thumb:hover {
-  background: var(--purple2);          
-}
-
-
-.card .card-nome {
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: right;
-    align-items: end;
-    flex: 1;
-    font-family: var(--outfit-font);
-    font-size: 17px;
-    margin: 0 0;
-}
-
-@media(max-width: 800px){
-    .card{
-        flex: 0 0 100%;
-    }
-}
-
-/* --------------------- Seção Produtos --------------------- */
-
-#carrossel-produtos{
-    anchor-name: --carrosselProdutos;
-}
-
-#carrossel-produtos::scroll-button(right), #carrossel-produtos::scroll-button(left){
-    position-anchor: --carrosselProdutos;
-}
-
 #produtos .main-container{
     padding-bottom: 100px;
-}
-
-#produtos button{
-    border-radius: 8px;
-    /* align-self: flex-end; */
-    height: 35px;
-
-    font-family: var(--poppins-font);
-    font-weight: normal;
 }
 
 .overlay{
