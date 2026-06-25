@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poções e Soluções</title>
+    
     <link rel="stylesheet" href="assets/styles/main.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     
     <!-- Fontes --> 
-    <!-- Dps verificar se n é melhor baixar -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
@@ -20,31 +19,14 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
 </head>
 
-<!-- Dps dar uma organizada na utilização de classes/ids 
-    E ver se dá pra juntar algumas propriedades repetidas em uma classe -->
 <body>
     <!-- Navbar -->
     <nav>
@@ -215,180 +197,10 @@
 
     <div id="toast-container"></div>
 
-    <!-- Script para o sidebar e pop up avaliação -->
-    <script>
-        function showSidebar(){
-            const sidebar = document.querySelector('.sidebar')
-            sidebar.style.display = 'flex'
-            const horizontal = document.querySelector('.horizontal-bar')
-            horizontal.style.display = 'none'    
-        }
-        function hideSidebar(){
-            const sidebar = document.querySelector('.sidebar')
-            sidebar.style.display = 'none'
-            const horizontal = document.querySelector('.horizontal-bar')
-            horizontal.style.display = 'flex'
-        }
-
-        const x = document.querySelector('.close-modal')
-        const modal = document.querySelector('.modal')
-        const overlay = document.querySelector('.overlay')
-
-        const close = function(){
-            modal.classList.add('hidden');
-            overlay.classList.add('hidden');
-        }
-
-        x.addEventListener('click', close);
-
-        // Script para exibir notificações (toasts)
-
-        function showToast(message, type = "success") {
-
-            const container =
-                document.getElementById("toast-container");
-
-            const toast =
-                document.createElement("div");
-
-            toast.classList.add("toast");
-            toast.classList.add(type);
-
-            toast.textContent = message;
-
-            container.appendChild(toast);
-
-            setTimeout(() => {
-                toast.remove();
-            }, 3000);
-        }
-
-        // Add toast ao solicitar compra
-        const formCompra = document.getElementById("form-compra")
-        formCompra.addEventListener("submit", (e) => {
-            e.preventDefault();
-            showToast(
-                "Pedido realizado com sucesso! Entraremos em contato em breve.",
-                "success"
-            );
-            close();
-        });
-
-    </script>
-
-    <!-- Script para o carrossel de produtos -->
-    <script>
-        // const carrossel = document.getElementById("carrossel-produtos");
-
-        document.querySelectorAll(".btn-next").forEach(btn => {
-            btn.addEventListener("click", () => {
-                const carrossel = btn.parentElement.querySelector(".carrossel");
-                carrossel.scrollBy({
-                    left: 320,
-                    behavior: "smooth"
-                });
-            });
-        });
-        document.querySelectorAll(".btn-prev").forEach(btn => {
-            btn.addEventListener("click", () => {
-                const carrossel = btn.parentElement.querySelector(".carrossel");
-                carrossel.scrollBy({
-                    left: -320,
-                    behavior: "smooth"
-                });
-            });
-        });
-
-        document.querySelector(".btn-prev")
-        .addEventListener("click", () => {
-            carrossel.scrollBy({
-                left: -320,
-                behavior: "smooth"
-            });
-        });
-
-        // const cards = carrossel.querySelectorAll(".card");
-        // const indicadores = document.getElementById("indicadores-produtos");
-
-        // // create dots
-        // cards.forEach((_, i) => {
-        //     const dot = document.createElement("span");
-        //     dot.classList.add("indicador");
-        //     if (i === 0) dot.classList.add("ativo");
-        //     indicadores.appendChild(dot);
-        // });
-
-        // const dots = indicadores.querySelectorAll('.indicador');
-
-        // // update active dot on scroll
-        // const updateActiveDot = () => {
-        //     const gap = 10; // matches CSS .carrossel gap
-        //     const index = Math.round(carrossel.scrollLeft / (cards[0].offsetWidth + gap));
-        //     dots.forEach(d => d.classList.remove('ativo'));
-        //     if (dots[index]) dots[index].classList.add('ativo');
-        // };
-
-        // carrossel.addEventListener('scroll', () => {
-        //     // throttle with requestAnimationFrame
-        //     if (window.requestAnimationFrame) {
-        //         window.requestAnimationFrame(updateActiveDot);
-        //     } else {
-        //         updateActiveDot();
-        //     }
-        // });
-
-        // // clicking a dot scrolls to the card
-        // dots.forEach((dot, i) => {
-        //     dot.addEventListener('click', () => {
-        //         cards[i].scrollIntoView({ behavior: 'smooth', inline: 'center' });
-        //     });
-        // });
-
-    </script>
-
-    <!-- Script para carregar as poções -->
-    <script>
-        async function loadPotions() {
-
-            // busca as poções cadastradas no backend
-            const response = await fetch("http://localhost:3000/potions")
-            const potions = await response.json()
-
-            console.log(potions)
-
-            // insere no frontend
-            const carrossel = document.getElementById("carrossel-produtos");
-            carrossel.innerHTML = "";
-
-            potions.forEach((potion) => {
-
-                const card = document.createElement("div");
-                card.classList.add("card");
-                card.innerHTML = `
-                    <h1> 
-                        <strong> ${potion.nome} </strong>
-                    </h1>
-                    <img src="/backend/${potion.imagem}" alt="${potion.nome}">
-                    <p>${potion.descricao}</p>
-                    <p class="price"> <strong> Valor </strong> : $${potion.preco.toFixed(2)}</p>
-                    <button class="btn-comprar"> Comprar </button>
-                `;
-
-                carrossel.appendChild(card);
-
-                // adiciona funcionalidade do botão
-                const btnComprar = card.querySelector(".btn-comprar")
-                btnComprar.addEventListener("click", async () => {
-                    // modal
-                    modal.classList.remove('hidden');
-                    overlay.classList.remove('hidden');    
-
-                    modal.querySelector("h1").textContent = `Comprar ${potion.nome}`;
-                });
-            })
-        }
-        window.addEventListener("load", loadPotions);
-    </script>
+    <!-- Add scripts -->
+    <script src="scripts/carrousel.js"></script>
+    <script src="scripts/dbInterface.js"></script>
+    <script src="scripts/toastNotfication.js"></script>
 
 </body>
 </html>

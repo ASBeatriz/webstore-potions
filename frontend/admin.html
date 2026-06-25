@@ -73,7 +73,7 @@
             </p>
 
             <div class="section-content">
-                <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                <table>
                     <thead>
                         <tr>
                             <th>Imagem</th>
@@ -85,13 +85,14 @@
                     </thead>
                     <tbody id="potionsTableBody">
                         <tr>
-                            <!-- <td></td>
+                            <!-- Linha exemplo -->
+                            <td></td>
                             <td>Poção Polissuco</td>
                             <td>Permite que o bebedor assuma a forma de outra pessoa.</td>
                             <td>$ 15.00</td>
                             <td>
                                 <button class="btn-remover">Remover</button>
-                            </td> -->
+                            </td>
                         </tr>
                         
                     </tbody>
@@ -101,179 +102,11 @@
         </div>
     </section>
 
-    <!-- <footer>
-        <div class="content">
-                <div class="links">
-                    <a href="#cadastrar"> Cadastrar </a>
-                    <a href="#listar"> Estoque </a>
-                    <a href="index.html"> Ir para a Loja </a>
-                </div>
-                <div class="title">
-                    Painel Administrativo
-                </div>
-                <div class="texto">
-                    Gerenciamento interno da loja Annabelle Merigold.
-                </div>
-        </div>
-        <hr>
-        <div class="bottom">
-            &copy Todos direitos reservados.
-        </div>
-    </footer> -->
-
 
     <div id="toast-container"></div>
-    
 
-    <!-- Script para exibir notificações (toasts) -->
-    <script>
-        function showToast(message, type = "success") {
-
-            const container =
-                document.getElementById("toast-container");
-
-            const toast =
-                document.createElement("div");
-
-            toast.classList.add("toast");
-            toast.classList.add(type);
-
-            toast.textContent = message;
-
-            container.appendChild(toast);
-
-            setTimeout(() => {
-                toast.remove();
-            }, 10000);
-        }
-    </script> 
-
-    <script>
-
-        const form = document.getElementById("potionForm")
-
-        form.addEventListener(
-            "submit",
-            async (e) => {
-                e.preventDefault()
-                console.log("submit interceptado");
-
-                const formData = new FormData(form);
-
-                // const potion = {
-                //     nome: formData.get("nome"),
-                //     descricao: formData.get("descricao"),
-                //     // imagem: formData.get("imagem"),
-                //     preco: Number(formData.get("preco"))
-                // };
-
-                const response = await fetch(
-                    "http://localhost:3000/potions",
-                    {
-                        method: "POST",
-                        body: formData
-                    }
-                );
-
-                if (!response.ok) {
-                    showToast(
-                        "Erro ao cadastrar poção",
-                        "error"
-                    );
-                    setTimeout(() => {
-                        console.log("toast ainda existe");
-                    }, 5000);
-
-
-                    return;
-                }
-
-                const result = await response.json();
-
-                console.log(result);
-                showToast(
-                    "Poção cadastrada com sucesso!",
-                    "success"
-                );
-            }
-        )
-
-        async function loadPotions() {
-
-            // busca as poções cadastradas no backend
-            const response = await fetch("http://localhost:3000/potions")
-            const potions = await response.json()
-
-            console.log(potions)
-
-            // insere no frontend
-            const tbody = document.getElementById("potionsTableBody");
-            tbody.innerHTML = "";
-
-            potions.forEach((potion) => {
-                const tr = document.createElement("tr");
-                tr.innerHTML = `
-                    <td>
-                        <img
-                            src="http://localhost:3000/${potion.imagem}"
-                            alt="${potion.nome}"
-                            style="
-                                width: 50px;
-                                height: 50px;
-                                object-fit: cover;
-                            "
-                        >
-                    </td>
-
-                    <td>
-                        ${potion.nome}
-                    </td>
-
-                    <td>
-                        ${potion.descricao}
-                    </td>
-
-                    <td>
-                        $ ${Number(potion.preco).toFixed(2)}
-                    </td>
-
-                    <td>
-                        <button class="btn-remover" data-id="${potion.id}"">
-                            Remover
-                        </button>
-                    </td>
-                `;
-
-                tbody.appendChild(tr);
-
-                // adiciona funcionalidade do botão
-                const btnRemover = tr.querySelector(".btn-remover")
-                btnRemover.addEventListener("click", async () => {
-                    const response = await fetch(
-                        `http://localhost:3000/potions/${potion.id}`,
-                        {
-                            method: "DELETE"
-                        }
-                    );
-
-                    if (!response.ok) {
-                        throw new Error("Erro ao deletar poção");
-                    }
-
-                    const result = await response.json();
-
-                    console.log(result);
-                    showToast(
-                        "Poção removida com sucesso!",
-                        "success"
-                    );
-                })
-                 
-            });
-        }
-        window.addEventListener("load", loadPotions);
-
-
+    <script src="scripts/dbInterface.js"></script>
+    <script src="scripts/toastNotfication.js"></script>
 
     </script>
 </body>

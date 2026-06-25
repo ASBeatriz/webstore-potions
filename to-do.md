@@ -20,8 +20,10 @@ To-do
 [X] Campo de número no forms de compra
 [ ] Deixar responsivo (?)  
 
+[ ] Fazer um README bonitinho   <<<<<<  
+
 Antes de entregar:
     [ ] deixar banco como memory  
-    [ ] Organização
-        [ ] apagar estilizações inúteis e separá-las em arquivos diferentes  
-        [ ] separar os scripts em arquivos diferentes
+    [ ] Organização  
+        [X] apagar estilizações inúteis e separá-las em arquivos diferentes    
+        [ ] separar os scripts em arquivos diferentes  

@@ -1,123 +1,6 @@
-/* Variáveis */
-:root {
-    
-    --btn-shadow: 0px 1px 3px gray;
-    --btn-shadow-hover: 1px 1px 10px gray;
-
-    /* Fontes */
-    --tangerine-font: "Tangerine", cursive;
-    --gill-font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    --caveat-font: "Caveat", cursive;
-    --metamorphous-font: "Metamorphous", serif;
-
-    --outfit-font: "Outfit", sans-serif;
-    --inter-font: "Inter", sans-serif;
-    --hubballi-font: "Hubballi", sans-serif;
-    --open-sans-font: "Open Sans", sans-serif;
-    --poppins-font: "Poppins", sans-serif;
-
-    /* Cores */
-    --text-contrast: rgb(231, 202, 171);
-
-    --purple1: #2b1639;
-    --purple2: #47255e;
-    --blue2: #7c34ac;
-    --blue3: #45137b;
-    --gray: #ebf2fc;
-    --yellow1: #ae98ff;
-
-    /* cor temporária - onde deveriam ficar imagens */
-    --temp: linear-gradient(45deg, #dbdbdb 8.33%, #f7f7f7 8.33%, #f7f7f7 50%, #dbdbdb 50%, #dbdbdb 58.33%, #f7f7f7 58.33%, #f7f7f7 100%);
-}
+@import url("geral.css");
 
 /* Gerais */
-
-html{
-    scroll-behavior: smooth;
-}
-
-body{
-    margin: 0 0;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--purple1);
-    color: white;
-    font-family: var(--gill-font);
-    /* gap: 80px; */
-}
-
-.main-container{
-    width: 70%;
-    margin: auto;
-    padding: 60px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;      /* dist entre titulo e conteúdo */
-    
-    /* Só pra debug: */
-    /* background-color: rgb(249, 249, 235); */
-}
-
-.section-title{
-    color: var(--text-contrast);
-
-    /* font-family: var(--inter-font); */
-    font-family: var(--outfit-font);
-    font-optical-sizing: auto;
-    font-style: normal;
-
-    font-weight: bold;
-    font-size: 30px;
-    text-align: center;
-
-    min-width: 80%;
-    height: 30px;
-    /* border-radius: 15px; */
-    padding: 7px 0;
-    /* box-shadow: 0 2px 5px gray; */
-
-    /* centralizar o texto na div: */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.section-content{
-    display: grid;
-    width: 100%;
-}
-
-button{
-    border: 1px solid black;
-    border-radius: 40px;
-    box-shadow: var(--btn-shadow);
-    background-color: white;
-    color: black;
-    padding: 0 20px;
-    
-    font-size: 16px;
-    font-weight: bold;
-    font-family: var(--inter-font);
-    font-optical-sizing: auto;
-    font-style: normal;
-    
-    height: 30px;
-    min-width: 20%;
-    cursor: pointer;
-    
-    transition: 0.2s;
-}
-
-button:hover{
-    background-color: var(--blue2);
-    color: white;
-    box-shadow: var(--btn-shadow-hover);
-}
-
-button:active{
-    transform: translateY(2px);
-}
 
 .contato-btn{
     border: 1px solid black;
@@ -147,7 +30,7 @@ button:active{
 }
 
 .contato-btn:hover{
-    background-color: var(--blue2);
+    background-color: var(--light-purple1);
     color: white;
     box-shadow: var(--btn-shadow-hover);
 }
@@ -161,78 +44,7 @@ button:active{
 }
 
 
-.background-color2{
-    /* Sem grediente: */
-    background-color: var(--purple2);
-    
-    /* Com gradiente: (com padding pra compensar a parda de tamanho visual pelo gradiente) */
-    /* background: #2B1639;
-    background: linear-gradient(0deg,rgba(43, 22, 57, 1) 0%, rgba(71, 37, 94, 1) 3%, rgba(71, 37, 94, 1) 97%, rgba(43, 22, 57, 1) 100%); */
-    /* padding: 10px 0; */
-}
-
-.background-color2 .section-title{
-    background: #ffffff;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, var(--purple1) 20%, var(--purple1) 80%, rgba(255, 255, 255, 0) 100%);
-}
-
-.background-color1 .section-title{
-    background: #ffffff;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, var(--purple2) 20%, var(--purple2) 80%, rgba(255, 255, 255, 0) 100%);
-}
-
-/* --------------------- Toast Notification --------------------- */
-
-
-#toast-container {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    z-index: 9999;
-}
-
-.toast {
-    min-width: 250px;
-    padding: 15px 20px;
-
-    border-radius: 8px;
-
-    color: white;
-    font-weight: bold;
-
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-
-    animation: slideIn 0.3s ease;
-}
-
-.toast.success {
-    background-color: #2e7d32;
-}
-
-.toast.error {
-    background-color: #c62828;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-
 /* --------------------- Carrosel --------------------- */
-/* o scroll marker não funciona -- provavelmente porque o navegador n suporta (featura mt nova) */
 
 .carrossel-wrapper{
     position: relative;
@@ -250,7 +62,6 @@ button:active{
     scroll-behavior: smooth;
     scrollbar-width: none;
 
-    /* keep carousel inside its container and allow horizontal scrolling */
     width: 90%;
     max-width: 100%;
     justify-self: center;
@@ -266,77 +77,7 @@ button:active{
 .card{
     flex: 0 0 300px;
     scroll-snap-align: center;
-}
 
-@media(max-width: 800px){
-    .card{
-        flex: 0 0 100%;
-    }
-}
-
-.btn-prev,
-.btn-next{
-    position: absolute;
-    top: 50%;
-
-    width: 50px;
-    height: 50px;
-
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-
-    background: var(--purple2);
-    box-shadow: none;
-    color: white;
-    font-size: 24px;
-    justify-content: center;
-
-    z-index: 10;
-
-    /* override regras gerais dos botões */
-    min-width: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.background-color2 .btn-prev,
-.background-color2 .btn-next{
-    background: var(--purple1);
-}
-
-
-.btn-prev{
-    left: 5px;
-}
-
-.btn-next{
-    right: 5px;
-}
-
-/* .indicadores{
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 15px;
-}
-
-.indicador{
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #ccc;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.indicador.ativo{
-    background-color: var(--purple2);
-} */
-
-.card{
     display: flex;
     flex-direction: column;
     position: relative;
@@ -345,9 +86,7 @@ button:active{
 }
 
 .card img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
 }
 
@@ -381,121 +120,52 @@ button:active{
     font-family: var(--inter-font);
 }
 
-/* --------------------- Navbar --------------------- */
-nav{
+
+@media(max-width: 800px){
+    .card{
+        flex: 0 0 100%;
+    }
+}
+
+.btn-prev,
+.btn-next{
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 20;
-    padding: 5px 0;
-    background: rgba(71, 37, 94, 0.315);
-    backdrop-filter: blur(10px);
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
-    transition: 0.3s ease;
-}
+    top: 50%;
 
-nav::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(180deg, rgba(43, 22, 57, 0.55) 0%, rgba(43, 22, 57, 0.12) 50%, rgba(43, 22, 57, 0) 100%);
-}
+    width: 50px;
+    height: 50px;
 
-nav > * {
-    position: relative;
-    z-index: 1;
-}
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
 
-nav ul{
-    padding: 0 0;
-    margin: 0 0;
-    padding-inline-start: 0;
-    list-style: none;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 10px;
-}
-
-nav li{
-    height: 45px;
-    align-content: center;
-}
-
-nav a{
-    height: 70%;
-    padding: 0 30px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
-
+    background: var(--dark-purple2);
+    box-shadow: none;
     color: white;
-    font-size: 16px;
-    font-family: var(--poppins-font);
-    font-weight: bold;
+    font-size: 24px;
+    justify-content: center;
 
+    z-index: 10;
+
+    /* override regras gerais dos botões */
+    min-width: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-nav .horizontal-bar a:hover{
-    background-color: var(--blue3);
+.background-color2 .btn-prev,
+.background-color2 .btn-next{
+    background: var(--dark-purple1);
 }
 
-nav .sidebar a:hover{
-    background-color: #00004694;
+.btn-prev{
+    left: 5px;
 }
 
-nav ul li a.highlight{
-    background-color: white;
-    color: var(--purple2);
-}
-
-nav ul li a.highlight:hover{
-    background-color: rgb(228, 228, 228);
-    color: var(--purple2);
-}
-
-.sidebar{
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 250px;
-    z-index: 999;
-    background-color: #00004691;
-    backdrop-filter: blur(10px);
-    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.3);
-
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-
-.sibedar li{
-    width: 100%;
-}
-
-.menu-button{
-    display: none;
-}
-
-@media(max-width: 700px){
-    .hideOnMobile{
-        display: none;
-    }
-    .menu-button{
-        display: block;
-    }
-}
-
-@media(max-width: 400px){
-    .sidebar{
-        width: 100%;
-    }
-
+.btn-next{
+    right: 5px;
 }
 
 /* --------------------- Capa --------------------- */
@@ -512,8 +182,8 @@ nav ul li a.highlight:hover{
     min-height: 110vh;
     display: flex;
     flex-direction: column-reverse;
-    /* padding-bottom: 10vh; */
     align-items: flex-start;
+    /* padding-bottom: 10vh; */
     /* padding-left: 100px; */
     margin-bottom: 10vh;
 
@@ -531,7 +201,7 @@ nav ul li a.highlight:hover{
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
     "titulos localizacao";
-    text-shadow: var(--blue3) 4px 4px 10px;
+    text-shadow: var(--light-purple2) 4px 4px 10px;
     width: 80%;
     align-self: center;
 }
@@ -558,7 +228,7 @@ nav ul li a.highlight:hover{
     grid-area: localizacao;
     font-size: 20px;
     font-weight: normal;
-    background-color: var(--yellow1);
+    background-color: var(--light-purple3);
     color: white;
     border-radius: 20px;
     box-shadow: 2px 2px 5px gray;
@@ -583,11 +253,6 @@ nav ul li a.highlight:hover{
     padding-top: 10px;
 }
 
-/* #sobre .main-container .section-content{
-    grid-area: texto;
-    font-size: 20px;
-} */
-
 #sobre .main-container .section-content .titulo{
     font-size: 34px;
     font-weight: bold;
@@ -609,31 +274,25 @@ nav ul li a.highlight:hover{
 
 /* --------------------- Seção História --------------------- */
 
-/* Larger, proportional images for the História carousel */
 #carrossel-historia .card{
-    /* make each card wider so images render bigger */
     flex: 0 0 420px;
 }
 
 #carrossel-historia .card img{
     width: 100%;
-    height: auto; /* preserve image aspect ratio */
+    height: auto; /* preserva a proporção */
     object-fit: contain;
     display: block;
 }
 
-
 /* --------------------- Seção Produtos --------------------- */
 
-#carrossel-produtos .card {
+#carrossel-produtos .card{
     height: 500px;
     flex: 0 0 350px;
 
-    display: flex;
-    flex-direction: column;
-
     color: white;
-    background-color: var(--blue3);
+    background-color: var(--light-purple2);
 
     padding: 25px;
     gap: 20px;
@@ -656,7 +315,6 @@ nav ul li a.highlight:hover{
     align-self: center;
 }
 
-
 #carrossel-produtos .card img{
     height: 50%;
     width: 100%;
@@ -668,83 +326,10 @@ nav ul li a.highlight:hover{
     padding-bottom: 100px;
 }
 
-.overlay{
-    position: fixed;
-    inset: 0;
-
-    background-color: rgba(0,0,0,.5);
-    backdrop-filter: blur(3px);
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 5;
-}
-
-.modal{
-    background: var(--purple1);
-    /* color: var(--purple1); */
-    padding: 1rem;
-    padding-top: 0;
-    width: 30rem;
-    font-family: var(--gill-font);
-    border-radius: 10px;
-    border: var(--blue2) 4px solid;
-}
-
-.close-modal{
-    font-size: 2rem;
-    text-decoration: none;
-    color: white;
-
-    display: block;
-    width: fit-content;
-    margin-left: auto;
-}
-
-.modal h1{
-    text-align: center;
-    font-size: 20px;
-    margin: 0 0;
-}
-
-.modal p{
-
-}
-
-.hidden{
-    display: none;
-}
-
-label {
-  display: block;
-  margin-top: 15px;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-textarea{
-    min-height: 100px;
-    max-width: 100%;
-}
-
-.modal button{
-    display: block;
-    margin-left: auto;
-}
-
 /* --------------------- Footer --------------------- */
 
 footer{
-    background-color: var(--purple2);
+    background-color: var(--dark-purple2);
     color: white;
     font-family: var(--open-sans-font);
     font-size: 16px;
