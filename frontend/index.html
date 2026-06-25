@@ -149,50 +149,14 @@
 
                 <div class="carrossel" id="carrossel-produtos">
                     
-
+                    <!-- Card de exemplo -->
                     <div class="card">
-                        <img src="assets/images/potion_blue-sky.png" alt="Poção Blue Sky">
+                        <img src="/backend/uploads/1782332234915-potion_blue-sky.png" alt="Poção Blue Sky">
                         <p>Descrição: Essa poção provê um surto de inspiração por 24 horas. Foi utilizada por John Lennon quando escreveu Lucy in the Sky with Diamonds</p>
                         <p>Valor: 300 moedas</p>
                         <button class="btn-avaliar"> Comprar </button>
                     </div>
 
-                    <div class="card">
-                        <img src="assets/images/potion_beleza_eterna.png" alt="Poção da Beleza Eterna">
-                        <p>Descrição: Veneno que mata rápido.</p>
-                        <p>Valor: 100 moedas</p>
-                        <button class="btn-avaliar"> Comprar </button>
-                    </div>
-
-                    <div class="card">
-                        <img src="assets/images/potion_perfume_misterioso.png" alt="Poção Perfume Misterioso">
-                        <p>Descrição: Essa poção faz com que você fique cheirando lilás e groselha por 24 dias. Essência muito admirada pelos bruxos</p>
-                        <p>Valor: 200 moedas</p>
-                        <button class="btn-avaliar"> Comprar </button>
-                    </div>
-
-                    <div class="card">
-                        <img src="assets/images/potion_pinus.png" alt="Poção de Pinus">
-                        <p>Descrição: Essa poção faz com que você fique 10 cm mais alto! Observação: efeitos colaterais desconhecidos.</p>
-                        <p>Valor: 3000 moedas</p>
-                        <button class="btn-avaliar"> Comprar </button>
-                    </div>
-
-                    <div class="card">
-                        <img src="assets/images/potion_arco-iro.png" alt="Poção do Arco Íro">
-                        <p>Descrição: Traz felicidade momentânea. Pode durar de 10 minutos a 2 dias.</p>
-                        <p>Valor: 120 moedas</p>
-                        <button class="btn-avaliar"> Comprar </button>
-                    </div>
-
-                    <div class="card">
-                        <img src="assets/images/potion_caldeirao.png" alt="Caldeirão das Verdades Secretas">
-                        <p> Descrição: As pessoas lhe dirão apenas verdades por 1 hora. É necessário beber os 5L.</p>
-                        <p>Valor: 150 moedas</p>
-                        <button class="btn-avaliar"> Comprar </button>
-                    </div>
-
-                    <!-- indicator container moved outside the scrollable carousel so dots stay visible -->
                 </div>
 
                 <button class="btn-next">►</button>
@@ -263,17 +227,17 @@
             horizontal.style.display = 'flex'
         }
 
-        const pop = document.querySelector('.btn-avaliar')
+        // const pop = document.querySelector('.btn-avaliar')
         const x = document.querySelector('.close-modal')
         const modal = document.querySelector('.modal')
         const overlay = document.querySelector('.overlay')
 
-        const open = function(){
-            modal.classList.remove('hidden');
-            overlay.classList.remove('hidden');
-        }
+        // const open = function(){
+        //     modal.classList.remove('hidden');
+        //     overlay.classList.remove('hidden');
+        // }
 
-        pop.addEventListener('click', open)
+        // pop.addEventListener('click', open)
 
         const close = function(){
             modal.classList.add('hidden');
@@ -284,6 +248,7 @@
 
     </script>
 
+    <!-- Script para o carrossel de produtos -->
     <script>
         // const carrossel = document.getElementById("carrossel-produtos");
 
@@ -351,6 +316,45 @@
         //     });
         // });
 
+    </script>
+
+
+    <script>
+        async function loadPotions() {
+
+            // busca as poções cadastradas no backend
+            const response = await fetch("http://localhost:3000/potions")
+            const potions = await response.json()
+
+            console.log(potions)
+
+            // insere no frontend
+            const carrossel = document.getElementById("carrossel-produtos");
+            carrossel.innerHTML = "";
+
+            potions.forEach((potion) => {
+
+                const card = document.createElement("div");
+                card.classList.add("card");
+                card.innerHTML = `
+                    <img src="/backend/${potion.imagem}" alt="${potion.nome}">
+                    <p>Descrição: ${potion.descricao}</p>
+                    <p>Valor: $${potion.preco.toFixed(2)}</p>
+                    <button class="btn-comprar"> Comprar </button>
+                `;
+
+                carrossel.appendChild(card);
+
+                // adiciona funcionalidade do botão
+                const btnComprar = card.querySelector(".btn-comprar")
+                btnComprar.addEventListener("click", async () => {
+                    // modal
+                    modal.classList.remove('hidden');
+                    overlay.classList.remove('hidden');    
+                });
+            })
+        }
+        window.addEventListener("load", loadPotions);
     </script>
 
 </body>

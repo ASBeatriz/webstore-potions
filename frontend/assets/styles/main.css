@@ -511,31 +511,10 @@ nav ul li a.highlight:hover{
     padding-top: 10px;
 }
 
-#section-sobre{
-    grid-template-columns: 2fr 3fr;
-    grid-template-areas: 
-    "perfil texto"
-    "botoes botoes";
-    align-content: space-between;
-    column-gap:100px;
-    row-gap: 70px;
-}
-
-#div-botoes-sobre{
-    grid-area: botoes;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 50px;
-}
-
-#sobre .main-container .section-content{
+/* #sobre .main-container .section-content{
     grid-area: texto;
     font-size: 20px;
-    /* font-family: var(--open-sans-font); */
-}
+} */
 
 #sobre .main-container .section-content .titulo{
     font-size: 34px;
@@ -561,11 +540,17 @@ nav ul li a.highlight:hover{
 /* --------------------- Seção Produtos --------------------- */
 
 #carrossel-produtos .card{
-    height: 250px;
+    height: 400px;
     flex: 0 0 300px;
     color: white;
     background-color: var(--blue3);
     padding: 25px 25px;
+}
+
+#carrossel-produtos .card img{
+    height: 50%;
+    width: 100%;
+    object-fit: contain;
 }
 
 #produtos .main-container{
