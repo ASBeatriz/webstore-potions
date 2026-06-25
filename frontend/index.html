@@ -80,14 +80,11 @@
         <div class="main-container">
             
             <div class="section-title"> Quem Somos? </div>
-            
-            <!-- <div class="section-content" id="section-sobre"> -->
 
                 <div class="section-content" id="sobre-texto">
-                    <p class="titulo outfit-font">Olá!</p>
-                    <p>* Descrição *</p>
+                    <p> <span class="titulo">Olá!</span> Bem-vindo(a) à <strong>Poções e Soluções</strong>, uma tradicional loja de poções localizada no lendário <strong>Beco da Última Saída</strong>. Fundada em <strong>1867</strong> pela renomada alquimista Annabelle Merigold, a loja se tornou referência entre aventureiros, magos e curiosos em busca de soluções para os mais variados problemas do cotidiano. Em nossas prateleiras, você encontrará poções cuidadosamente preparadas, desde elixires que despertam a criatividade até misturas capazes de revelar verdades ocultas.</p>
+                    <p>Com mais de um século de história, a Poções e Soluções combina conhecimento alquímico tradicional com ingredientes selecionados para oferecer produtos de qualidade e resultados surpreendentes. Seja para encontrar inspiração, mudar sua aparência, aumentar sua sorte ou simplesmente explorar os mistérios da magia, nossa loja está sempre pronta para ajudar você a encontrar a poção ideal.</p>
                 </div>
-            <!-- </div> -->
         </div>
     </section>
     
@@ -104,30 +101,35 @@
                 <div class="carrossel" id="carrossel-historia">
 
                     <div class="card">
-                        <img src="" alt="">
-
-                        <div class="card-overlay">
-                            <h3>Titulo 1</h3>
-                            <p>Pequena descrição</p>
-                        </div>
+                        <img src="assets/images/historico/hist_1.png" alt="">
                     </div>
                     
                     <div class="card">
-                        <img src="" alt="">
-
-                        <div class="card-overlay">
-                            <h3>Titulo 2</h3>
-                            <p>Pequena descrição</p>
-                        </div>
+                        <img src="assets/images/historico/hist_2.png" alt="">
                     </div>
                     
                     <div class="card">
-                        <img src="" alt="">
+                        <img src="assets/images/historico/hist_3.png" alt="">
+                    </div>
 
-                        <div class="card-overlay">
-                            <h3>Titulo 3</h3>
-                            <p>Pequena descrição</p>
-                        </div>
+                    <div class="card">
+                        <img src="assets/images/historico/hist_4.png" alt="">
+                    </div>
+
+                    <div class="card">
+                        <img src="assets/images/historico/hist_5.png" alt="">
+                    </div>
+
+                    <div class="card">
+                        <img src="assets/images/historico/hist_6.png" alt="">
+                    </div>
+
+                    <div class="card">
+                        <img src="assets/images/historico/hist_7.png" alt="">
+                    </div>
+
+                    <div class="card">
+                        <img src="assets/images/historico/hist_8.png" alt="">
                     </div>
 
                 </div>
@@ -152,8 +154,8 @@
                     <!-- Card de exemplo -->
                     <div class="card">
                         <img src="/backend/uploads/1782332234915-potion_blue-sky.png" alt="Poção Blue Sky">
-                        <p>Descrição: Essa poção provê um surto de inspiração por 24 horas. Foi utilizada por John Lennon quando escreveu Lucy in the Sky with Diamonds</p>
-                        <p>Valor: 300 moedas</p>
+                        <p>Essa poção provê um surto de inspiração por 24 horas. Foi utilizada por John Lennon quando escreveu Lucy in the Sky with Diamonds</p>
+                        <p class="price">Valor: 300 moedas</p>
                         <button class="btn-avaliar"> Comprar </button>
                     </div>
 
@@ -197,13 +199,13 @@
                     <a href="#contratar-servico"> Produtos </a>
                 </div>
                 <div class="title">
-                    Loja de Poções
+                    Poções e Soluções
                 </div>
                 <div class="btn-div">
-                    <a class="contato-btn" href="" target="_blank"> <img src="assets/images/icons/mail.svg" alt="ícone de email"> Entre em contato</a>
+                    <a class="contato-btn" href="" onclick="alert('Redirecionamento para o Whatsapp')"> <img src="assets/images/icons/mail.svg" alt="ícone de email"> Entre em contato</a>
                 </div>
                 <div class="texto">
-                    * frase curta e direta sobre a loja *
+                    O melhor lugar para explorar os mistérios da magia!
                 </div>
         </div>
         <hr>
@@ -338,8 +340,8 @@
                 card.classList.add("card");
                 card.innerHTML = `
                     <img src="/backend/${potion.imagem}" alt="${potion.nome}">
-                    <p>Descrição: ${potion.descricao}</p>
-                    <p>Valor: $${potion.preco.toFixed(2)}</p>
+                    <p>${potion.descricao}</p>
+                    <p class="price">Valor: $${potion.preco.toFixed(2)}</p>
                     <button class="btn-comprar"> Comprar </button>
                 `;
 

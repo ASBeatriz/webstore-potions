@@ -53,7 +53,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;      /* dist entre titulo e conteúdo */
+    gap: 20px;      /* dist entre titulo e conteúdo */
     
     /* Só pra debug: */
     /* background-color: rgb(249, 249, 235); */
@@ -68,7 +68,7 @@ body{
     font-style: normal;
 
     font-weight: bold;
-    font-size: 29px;
+    font-size: 30px;
     text-align: center;
 
     min-width: 80%;
@@ -237,8 +237,10 @@ button:active{
     cursor: pointer;
 
     background: var(--purple2);
+    box-shadow: none;
     color: white;
     font-size: 24px;
+    justify-content: center;
 
     z-index: 10;
 
@@ -249,6 +251,12 @@ button:active{
     align-items: center;
     justify-content: center;
 }
+
+.background-color2 .btn-prev,
+.background-color2 .btn-next{
+    background: var(--purple1);
+}
+
 
 .btn-prev{
     left: 5px;
@@ -325,15 +333,29 @@ button:active{
 
 /* --------------------- Navbar --------------------- */
 nav{
-    /* background-color: var(--purple2); */
-    background: #47255E;
-    background: linear-gradient(180deg,rgba(71, 37, 94, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    padding: 5px 0;
+    background: rgba(71, 37, 94, 0.315);
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+    transition: 0.3s ease;
+}
 
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(43, 22, 57, 0.55) 0%, rgba(43, 22, 57, 0.12) 50%, rgba(43, 22, 57, 0) 100%);
+}
+
+nav > * {
     position: relative;
-    z-index: 10;
-
-    /* quero que a nav bar fique em cima da capa de modo que eu consiga ver o gradiente */
+    z-index: 1;
 }
 
 nav ul{
@@ -344,12 +366,12 @@ nav ul{
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    gap: 10px;
 }
 
 nav li{
-    height: 60px;
+    height: 45px;
     align-content: center;
-    margin: 0 5px;
 }
 
 nav a{
@@ -368,7 +390,7 @@ nav a{
 }
 
 nav .horizontal-bar a:hover{
-    background-color: var(--blue2);
+    background-color: var(--blue3);
 }
 
 nav .sidebar a:hover{
@@ -429,15 +451,15 @@ nav ul li a.highlight:hover{
 /* --------------------- Capa --------------------- */
 #capa{
     background-image: 
-        linear-gradient(0deg,rgba(43, 22, 57, 1) 0%, rgba(255, 255, 255, 0) 15%),
+        linear-gradient(0deg,rgba(43, 22, 57, 1) 0%, transparent 10%),
         url(../images/foto-capa.png);
 
     background-size: cover;
-    background-position: 0% 10%;
+    background-position: 0% -10%;
     background-repeat: no-repeat;
     background-origin: content-box;
 
-    min-height: 100vh;
+    min-height: 110vh;
     display: flex;
     flex-direction: column-reverse;
     /* padding-bottom: 10vh; */
@@ -454,7 +476,7 @@ nav ul li a.highlight:hover{
 }
 
 #texto-capa{
-    margin: 10vh 0;
+    margin: 15vh 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
@@ -519,21 +541,35 @@ nav ul li a.highlight:hover{
 #sobre .main-container .section-content .titulo{
     font-size: 34px;
     font-weight: bold;
-    /* color: var(--purple2); */
     color: var(--text-contrast);
-    margin: 10px 0;
+
+    padding-right: 15px;
 
     font-family: var(--outfit-font);
     font-optical-sizing: auto;
     font-style: normal;
 }
 
+#sobre p{
+    font-size: 22px;
+    line-height: 1.2;
+    text-align: justify;
+    /* color: var(--text-contrast); */
+}
+
 /* --------------------- Seção História --------------------- */
 
+/* Larger, proportional images for the História carousel */
 #carrossel-historia .card{
-    height: 500px;
-    /* aspect-ratio: 5 / 3;  /* Para o caso de querer manter a proporção na variação do tamanho de telas*/
-    flex: 0 0 500px;
+    /* make each card wider so images render bigger */
+    flex: 0 0 420px;
+}
+
+#carrossel-historia .card img{
+    width: 100%;
+    height: auto; /* preserve image aspect ratio */
+    object-fit: contain;
+    display: block;
 }
 
 
@@ -545,12 +581,28 @@ nav ul li a.highlight:hover{
     color: white;
     background-color: var(--blue3);
     padding: 25px 25px;
+    text-align: center;
+}
+
+#carrossel-produtos .card button{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#carrossel-produtos .card .price{
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #carrossel-produtos .card img{
     height: 50%;
     width: 100%;
     object-fit: contain;
+    padding-bottom: 10px;
 }
 
 #produtos .main-container{
